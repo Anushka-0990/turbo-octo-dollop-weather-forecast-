@@ -1,0 +1,74 @@
+🌡️ Weather Forecasting Using Time Series (ARIMA)
+
+📌 Overview
+
+This project predicts future temperature values using historical weather data of Delhi. We apply time series forecasting techniques, specifically the ARIMA model, to predict the temperature trend.
+
+It’s useful in environmental research, agriculture, and for building predictive systems in weather applications.
+
+📁 Dataset
+
+- Dataset: Daily Delhi Climate Data
+- Source: https://www.kaggle.com/datasets/sumanthvrao/daily-climate-data
+- File: DailyDelhiClimateTrain.csv
+- Features:
+  - meantemp
+  - humidity
+  - wind_speed
+  - meanpressure
+
+🧠 Model Used
+
+- ARIMA (AutoRegressive Integrated Moving Average)
+
+📊 Features
+
+- Parse date and index the dataset by time
+- Visualize and decompose seasonal trends
+- Apply ARIMA to forecast temperature for the next 30 days
+- Plot actual vs predicted values
+
+🛠️ Tech Stack
+
+- Python 3.x
+- Libraries:
+  - pandas, numpy
+  - matplotlib, seaborn
+  - statsmodels (for ARIMA)
+
+📂 Folder Structure
+
+weather-forecast/
+├── data/
+│   └── DailyDelhiClimateTrain.csv
+├── main_notebook.ipynb
+├── requirements.txt
+├── README.txt
+└── data_info.txt
+
+🚀 How to Run
+
+1. Download the dataset and place it inside the `data/` folder
+2. Install the required libraries:
+   pip install -r requirements.txt
+3. Open `main_notebook.ipynb` in Jupyter Notebook
+4. Run all cells to train the ARIMA model and view forecast plots
+
+🧯 Troubleshooting
+
+❗ ValueError: Not enough observations
+✔️ Try training on more historical data (larger time range)
+
+❗ ModuleNotFoundError: No module named 'statsmodels'
+✔️ Run: pip install statsmodels
+
+❗ Plot appears flat
+✔️ Try changing ARIMA parameters (p,d,q) like (5,1,0)
+
+📌 Output
+
+- Forecast graph for the next 30 days
+- Temperature trend visualization
+- Real-world time series ML experience
+
+✍️ Created by Tushar for Anushka’s GitHub ML portfolio ☁️
