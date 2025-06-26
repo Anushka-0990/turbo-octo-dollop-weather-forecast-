@@ -1,0 +1,14 @@
+Dataset Name: Daily Delhi Climate Data
+Source: https://www.kaggle.com/datasets/sumanthvrao/daily-climate-data
+File Used: DailyDelhiClimateTrain.csv
+
+Columns:
+- date
+- meantemp (mean temperature)
+- humidity
+- wind_speed
+- meanpressure
+
+Steps:
+1. Download the dataset CSV file from the Kaggle link
+2. Place the file inside a `data/` folder in your project
