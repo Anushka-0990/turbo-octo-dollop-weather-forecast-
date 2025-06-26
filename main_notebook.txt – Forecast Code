@@ -1,0 +1,49 @@
+# 🌡️ Weather Forecasting using Time Series (ARIMA)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.arima.model import ARIMA
+from datetime import datetime
+
+# Load dataset
+df = pd.read_csv("data/DailyDelhiClimateTrain.csv")
+
+# Convert date column to datetime
+df['date'] = pd.to_datetime(df['date'])
+df.set_index('date', inplace=True)
+
+# Plot temperature over time
+plt.figure(figsize=(10,5))
+df['meantemp'].plot(title='Daily Mean Temperature')
+plt.xlabel('Date')
+plt.ylabel('Temperature')
+plt.grid(True)
+plt.show()
+
+# ARIMA modeling
+train = df['meantemp'][:len(df)-30]  # All except last 30 days
+test = df['meantemp'][-30:]          # Last 30 days for testing
+
+# Train ARIMA model
+model = ARIMA(train, order=(5,1,0))
+model_fit = model.fit()
+
+# Forecast next 30 days
+forecast = model_fit.forecast(steps=30)
+
+# Plot actual vs forecast
+plt.figure(figsize=(10,5))
+plt.plot(test.index, test, label='Actual')
+plt.plot(test.index, forecast, label='Forecast', linestyle='--')
+plt.title("30-Day Temperature Forecast (ARIMA)")
+plt.xlabel("Date")
+plt.ylabel("Temperature")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Accuracy
+from sklearn.metrics import mean_squared_error
+mse = mean_squared_error(test, forecast)
+print(f"Mean Squared Error: {mse:.2f}")
+
